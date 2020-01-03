@@ -1,12 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
+import { HomeWrapper } from "./styled";
+import { Header } from "../../components/Header";
 
-class Home extends React.Component {
-  render() {
-    return <div>
-        Hello World!!
-      </ div>
-  };
+const Home = () => {
+  return <HomeWrapper>
+    <Header />
+  </ HomeWrapper>
 };
 
-export default connect()(Home);
+export default Home;
