@@ -17,8 +17,8 @@ import { routerMiddleware} from "connected-react-router";
 import styled from "styled-components";
 
 export const MainStyled = styled.div`
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-  font-family: 'Roboto', sans-serif;
+  @import url('https://fonts.googleapis.com/css?family=Lato&display=swap"');
+  font-family: 'Lato', sans-serif;
   margin: -8px;
 `
 

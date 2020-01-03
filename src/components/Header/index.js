@@ -1,13 +1,18 @@
 import React from "react";
-import { HeaderWrapper, FlexDiv } from "./styled";
+import { HeaderWrapper, FlexDivMenu, ImgLogo } from "./styled";
 import { Menu } from "../Menu";
+
+const img = {
+    logo: require('../../assets/logo.png')
+}
 
 export const Header = () => {
     return <HeaderWrapper>
-        <FlexDiv>
-            <h1>Logo</h1>
+        <FlexDivMenu>
+            <ImgLogo src={img.logo} alt="logo"/>
             <Menu />
-        </FlexDiv>
+        </FlexDivMenu>
+        
     </HeaderWrapper>
 };
 
