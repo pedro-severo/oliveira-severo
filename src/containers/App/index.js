@@ -5,7 +5,6 @@ import {
   MuiThemeProvider, 
   CssBaseline,
   jssPreset,
-  CssBaseLine 
 } from "@material-ui/core";
 import JssProvider from "react-jss/lib/JssProvider";
 import { create } from "jss"
@@ -32,7 +31,7 @@ const jss = create({
 });
 
 const middlewares = [
-  applyMiddleware(thunk),
+  applyMiddleware(routerMiddleware(history), thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__
     ? window.__REDUX_DEVTOOLS_EXTENSION__()
     : f => f
