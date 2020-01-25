@@ -1,11 +1,18 @@
 import React from "react";
 import { MenuWrapper } from "./styled";
 
-export const Menu = () => {
+export const Menu = props => {
+
     return <MenuWrapper>
-        <p>Nos conte seu caso</p>
-        <p>Blog</p>
-        <p>Contato</p>
+        <div onClick={props.onClickFirstLink}>
+            <p>{props.firstLink}</p>
+        </div>
+        <div onClick={props.onClickSecondLink}>
+            <p>{props.secondLink}</p>
+        </div>
+        <div onClick={props.onClickThirdLink}>
+            <p>{props.thirdLink}</p>
+        </div>
     </MenuWrapper>
 };
 

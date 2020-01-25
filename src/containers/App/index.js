@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { 
   MuiThemeProvider, 
+  createGenerateClassName,
   CssBaseline,
   jssPreset,
 } from "@material-ui/core";
@@ -23,6 +24,8 @@ export const MainStyled = styled.div`
 `
 
 export const history = createBrowserHistory();
+
+const generateClassName = createGenerateClassName();
 
 const jss = create({
   ...jssPreset(),
