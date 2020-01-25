@@ -3,10 +3,11 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { 
   MuiThemeProvider, 
+  createGenerateClassName,
   CssBaseline,
   jssPreset,
-  CssBaseLine 
 } from "@material-ui/core";
+import JssProvider from "react-jss/lib/JssProvider";
 import { create } from "jss"
 import theme from "../../style/theme";
 import Router from "../Router";
@@ -17,16 +18,23 @@ import { routerMiddleware} from "connected-react-router";
 import styled from "styled-components";
 
 export const MainStyled = styled.div`
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-  font-family: 'Roboto', sans-serif;
-  margin:0;
-  padding:0;
+  @import url('https://fonts.googleapis.com/css?family=Lato&display=swap"');
+  font-family: 'Lato', sans-serif;
+  margin: -8px;
 `
 
 export const history = createBrowserHistory();
 
+const generateClassName = createGenerateClassName();
+
+const jss = create({
+  ...jssPreset(),
+  // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+  insertionPoint: document.getElementById("jss-insertion-point")
+});
+
 const middlewares = [
-  applyMiddleware(thunk),
+  applyMiddleware(routerMiddleware(history), thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__
     ? window.__REDUX_DEVTOOLS_EXTENSION__()
     : f => f
@@ -36,12 +44,14 @@ const store = createStore(generateReducers(history), compose(...middlewares));
 
 export const App = () => (
   <Provider store={store}>
-    <MuiThemeProvider theme={theme}>
-      <CssBaseline />
-      <MainStyled>
-        <Router history={history}/>
-      </MainStyled>
-    </MuiThemeProvider>
+    <JssProvider jss={jss} generateClassName={generateClassName}>
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <MainStyled>
+          <Router history={history}/>
+        </MainStyled>
+      </MuiThemeProvider>
+    </JssProvider>
   </Provider>
 );
 
